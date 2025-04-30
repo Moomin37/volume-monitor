@@ -85,6 +85,8 @@ def track_watchlist():
             with open("volume_log.csv", "a") as f:
                 f.write(f"{now},{symbol},{vol}\n")
     print(f"[{now}] 已追蹤 watchlist 中的幣並記錄成交量")
+print("✅ Bot launched successfully.")
+print("🔄 Starting to monitor USDT pairs...")    
 
 # === 主邏輯 ===
 usdt_pairs = get_usdt_pairs()
@@ -103,6 +105,7 @@ while True:
 
     # 掃描所有幣種
     for symbol in usdt_pairs:
+        print(f"🔍 Checking symbol: {symbol}")
         if symbol not in timestamps:
             ohlcv, latest_timestamp = fetch_ohlcv_with_timestamp(symbol)
             if not ohlcv:
